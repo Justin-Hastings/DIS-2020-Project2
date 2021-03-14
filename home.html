@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Yacht racing</title>
+
+		<link rel="stylesheet" 
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+			crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="js/displayfunctions.js"></script>
+		<script src="js/selectclubs.js"></script>
+		<script src="js/selectseries.js"></script>
+		<script src="js/selectraces.js"></script>
+		<script src="js/selectracesdetail.js"></script>
+	</head>
+	<body onload="requestClubs('clubslist', 'select')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4	col-md-6	col-sm-8 	 col-xs-10
+						offset-lg-4	offset-md-3 offset-sm-2 offset-xs-1
+						form-div">
+				<h1>Yacht Racing</h1>
+				<div>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb" id='navbreadcrumblist'>
+							<li class="breadcrumb-item" 
+								aria-current="page">Home</li>
+						</ol>
+					</nav>
+				</div>
+				<div>
+					<!-- Load clubs as the page loads 
+							On change of clubs load serieslist 
+								On change of serieslist load racelist 
+									On change of racelist loaddetails -->
+					<div class="form-group">				
+						<label for='clubslist'>Select club</label>
+						<select id="clubslist" ></select>
+					</div>
+					<div class="form-group">
+						<a href="clubs.html" 
+							class="btn btn-primary btn-block btn-lg">Clubs</a>
+					</div>
+					<div class="form-group">
+						<a href="classes.html" 
+							class="btn btn-primary btn-block btn-lg">Racing classes</a>
+					</div>
+					<div class="form-group">
+						<a href="boats.html" 
+							class="btn btn-primary btn-block btn-lg">Boats</a>
+					</div>
+					<div class="form-group">
+						<a href="skippers.html" 
+							class="btn btn-primary btn-block btn-lg">Skippers</a>
+					</div>
+					<div class="form-group">
+						<a href="skipper2boat.html" 
+							class="btn btn-primary btn-block btn-lg">Skippers with boats</a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	<div>
+	</body>
+</html>

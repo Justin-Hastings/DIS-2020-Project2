@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Yacht racing</title>
+
+		<link rel="stylesheet" 
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+			crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="js/displayfunctions.js"></script>
+		<script src="js/selectclubs.js"></script>
+		<script src="js/selectseries.js"></script>
+		<script src="js/selectraces.js"></script>
+		<script src="js/selectracesdetail.js"></script>
+		<script src="js/inserts.js"></script>
+	</head>
+	<body onload="canUpdate(); requestClubs('clubslist', 'select')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10	col-md-10	col-sm-12 	 col-xs-12
+						offset-lg-1	offset-md-1 offset-sm-0 offset-xs-0
+						form-div">
+				<h1>Yacht Racing</h1>
+				<div>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb" id='navbreadcrumblist'>
+							<li class="breadcrumb-item" 
+								aria-current="page">
+								<a href='home.html'>Home</a></li>
+						</ol>
+					</nav>
+				</div>
+				<div>
+					<!-- Load clubs as the page loads 
+							On change of clubs load serieslist 
+								On change of serieslist load racelist 
+									On change of racelist loaddetails -->
+									
+					<!-- Choice use a label or add aria-label to select element -->
+					<select id='clubslist' 
+						onchange="requestSeries('serieslist', 'select'); 
+							manageBreadcrumbs()"
+							aria-label='Clubs list'></select>
+					<select id='serieslist' 
+						onchange="requestRaces('races', 'select'); 
+							manageBreadcrumbs()"
+							aria-label='Series list'></select>
+					<select id='races' 
+						onchange="requestRaceDetail('detailedresults'); 
+							manageBreadcrumbs()"
+							aria-label='Races list'></select>
+				</div>
+				<div id="detailedresults" class="form-group"></div>
+				<div id='maintainClubs' class="form-group" style="display:none">
+					<form action="" method="post">
+						<div class="form-group">
+							<button type='button' 
+								class="btn btn-primary btn-block btn-lg">
+								Refresh display of clubs</button>
+						</div>
+						<div class="form-group">
+							<label for='newClub'>New Club name</label>
+							<input id='newClub' type='text'>
+							<label for='newAddress'>Address</label>
+							<input id='newAddress' type='text'>
+						</div>
+						<div class="form-group">
+							<button type="button"  
+								onclick="insertClub('newClub','newAddress', 
+										'alert-success','alert-danger')" 
+								name="insertclub-btn" 
+								class="btn btn-primary btn-block btn-lg">
+								Register new club</button>
+						</div>
+					</form>	
+				</div>
+				<div id='maintainSeries' class="form-group" style="display:none">
+					<form action="" method="post">
+						<div class="form-group">
+							<button type='button' 
+								class="btn btn-primary btn-block btn-lg">
+								Refresh display of series</button>
+						</div>
+						<div class="form-group">
+							<label for='newSeries'>New Series name</label>
+							<input id='newSeries' type='text'>
+						</div>
+						<div class="form-group">
+							<button type="button"  onclick="insertseries()"
+								name="insertseries-btn" 
+								class="btn btn-primary btn-block btn-lg">
+								Register new series</button>
+						</div>
+					</form>	
+				</div>
+				<div id='maintainRaces' class="form-group" style="display:none">
+					<form action="" method="post">
+						<div class="form-group">
+							<button type='button' 
+								class="btn btn-primary btn-block btn-lg">
+								Refresh display of races</button>
+						</div>
+						<div class="form-group">
+							<label for='newRace'>New Race name</label>
+							<input id='newRace' type='text'>
+						</div>
+						<div class="form-group">
+							<button type="button"  onclick="insertrace()"
+								name="insertrace-btn" 
+								class="btn btn-primary btn-block btn-lg">
+								Register new race</button>
+						</div>
+					</form>	
+					<form action="" method="post">
+						<div class="form-group">
+							<button type='button' 
+								class="btn btn-primary btn-block btn-lg">
+								Refresh display of skipper and boats in series</button>
+						</div>
+						<div class="form-group">
+							<label for='newSkipperBoatSeries'>Skipper and boats</label>
+							<input id='newSkipperBoatSeries' type='text'>
+						</div>
+						<div class="form-group">
+							<button type="button"  onclick="insertrace()"
+								name="insertrace-btn" 
+								class="btn btn-primary btn-block btn-lg">
+								Register skipper and boats in series</button>
+						</div>
+					</form>	
+				</div>
+				<div id='maintainRacesDetails' class="form-group" style="display:none">
+					<!-- Register POB at start of race -->
+					<!-- Register Boat crossing finish line -->
+					<!-- Register DNS and DNF -->
+				</div>
+				<div id="alert-success"></div>	
+				<div id="alert-danger"></div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
